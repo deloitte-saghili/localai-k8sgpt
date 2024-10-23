@@ -1,41 +1,59 @@
 
-# Local AI
+# Local AI Inference Tools
 
-Local AI is a lightweight, fast, and secure AI inference service that can run anywhere.
+In this guide, we will explore two powerful tools for local inference with large language models (LLMs): **Ollama** and **Local AI**. Both tools provide a way to run models locally on your machine, offering more control and privacy compared to cloud-based solutions.
 
-## Table of Contents
+## Ollama
 
-- [Download Binary](#download-binary)
-- [Run Local AI](#run-local-ai)
-- [Web UI](#web-ui)
-- [List Models](#list-models)
-- [Install Models](#install-models)
-- [With Docker Compose](#with-docker-compose)
-- [Try It Out!](#try-it-out)
-- [An Actual Use Case: Troubleshooting K8s](#an-actual-use-case-troubleshooting-k8s)
-  - [Creating a Test Cluster with an Issue](#creating-a-test-cluster-with-an-issue)
-  - [Install K8sGPT](#install-k8sgpt)
-  - [Setup LocalAI as the AI Backend](#setup-localai-as-the-ai-backend)
-  - [Analyze Our Issue with Local AI](#analyze-our-issue-with-local-ai)
-  - [Debugging with Log Level](#debugging-with-log-level)
+**Ollama** is a local inference tool that allows you to easily pull and run large language models on your local machine. With Ollama, you can connect to a wide range of LLMs and manage them efficiently. It also integrates with the OpenWeb UI for seamless interaction with models.
 
-## Download Binary
+- Download Ollama [here](https://ollama.com/download).
+
+### Pulling a Model
+
+You can pull a model using the following commands:
+
+```bash
+ollama pull llama3.2
+```
+
+or
+
+```bash
+ollama pull llava
+```
+
+### Running OpenWeb UI to Connect to Locally Running Ollama
+
+Run the following command to start OpenWeb UI and connect it to your locally running Ollama instance:
+
+```bash
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+```
+
+---
+
+## Local AI
+
+**Local AI** is a lightweight, fast, and secure AI inference service that can run anywhere. It provides a robust environment for deploying and running language models locally. This solution is perfect for users who want control over their AI workloads and need a flexible deployment option.
+
+### Download Binary
 
 ```bash
 curl -Lo local-ai "https://github.com/mudler/LocalAI/releases/download/v2.22.0/local-ai-$(uname -s)-$(uname -m)" && chmod +x local-ai
 ```
 
-## Run Local AI
+### Run Local AI
 
 ```bash
 ./local-ai
 ```
 
-## Web UI
+### Web UI
 
 Open a browser tab and head over to [http://localhost:8080](http://localhost:8080) to check out the model gallery.
 
-## List Models
+### List Models
 
 ```bash
 local-ai models list
@@ -47,7 +65,7 @@ Or
 curl http://localhost:8080/models
 ```
 
-## Install Models
+### Install Models
 
 You can either use the web UI to install the models or the CLI:
 
@@ -55,7 +73,7 @@ You can either use the web UI to install the models or the CLI:
 local-ai models install llama-3.2-3b-instruct:q4_k_m
 ```
 
-## With Docker Compose
+### With Docker Compose
 
 ```yaml
 # Prepare the models into the `models` directory
@@ -85,7 +103,7 @@ curl http://localhost:8080/v1/completions -H "Content-Type: application/json" -d
    }'
 ```
 
-## Try It Out!
+### Try It Out!
 
 ```bash
 curl http://localhost:8080/v1/completions -H "Content-Type: application/json" -d '{
@@ -95,35 +113,35 @@ curl http://localhost:8080/v1/completions -H "Content-Type: application/json" -d
    }'
 ```
 
-## An Actual Use Case: Troubleshooting K8s
+### An Actual Use Case: Troubleshooting K8s
 
-### Creating a Test Cluster with an Issue
+#### Creating a Test Cluster with an Issue
 
 ```bash
 kind create cluster
 kubectl run nginx --image nginx2
 ```
 
-### Install K8sGPT
+#### Install K8sGPT
 
 ```bash
 brew tap k8sgpt-ai/k8sgpt
 brew install k8sgpt
 ```
 
-### Setup LocalAI as the AI Backend
+#### Setup LocalAI as the AI Backend
 
 ```bash
 k8sgpt auth add -b localai -u http://localhost:8080/v1 --model llama-3.2-3b-instruct-q4_k_m.gguf
 ```
 
-### Analyze Our Issue with Local AI
+#### Analyze Our Issue with Local AI
 
 ```bash
 k8sgpt analyze --explain --backend localai 
 ```
 
-### Debugging with Log Level
+#### Debugging with Log Level
 
 Set the log level to debug and rerun the solution:
 
@@ -137,6 +155,8 @@ k8sgpt analyze --explain --backend localai
 
 ## Resources
 
+- [Ollama](https://ollama.com)
+- [Open Web UI](https://docs.openwebui.com)
 - [LocalAI](https://localai.io)
 - [K8sGPT](https://k8sgpt.ai)
 - [LocalAI GitHub](https://github.com/mudler/LocalAI)
