@@ -22,6 +22,10 @@ or
 ```bash
 ollama pull llava
 ```
+### Running a Model
+```bash
+ollama run llama3.2
+```
 
 ### Running OpenWeb UI to Connect to Locally Running Ollama
 
