@@ -41,6 +41,18 @@ docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-
 
 **Local AI** is a lightweight, fast, and secure AI inference service that can run anywhere. It provides a robust environment for deploying and running language models locally. This solution is perfect for users who want control over their AI workloads and need a flexible deployment option.
 
+![Local AI Architecture](image-1.png)
+
+| **Model**       | **Year** | **Number of Parameters** | **Size (GB)**        |
+|-----------------|----------|--------------------------|----------------------|
+| **GPT-2**       | 2019     | 1.5B                     | ~0.5 GB              |
+| **GPT-3**       | 2020     | 175B                     | ~350 GB              |
+| **GPT-3.5**     | 2022     | 175B                     | ~350 GB              |
+| **GPT-4**       | 2023     | Estimated 1T - 1.8T      | ~800-1200 GB         |
+| **LLaMA 2**     | 2023     | 7B / 13B / 70B           | ~4 GB / ~8 GB / ~120 GB |
+| **LLaMA 3.2**   | 2024     | 1B / 3B / 90B            | ~2-600 GB          |
+
+
 ### Download Binary
 
 ```bash
