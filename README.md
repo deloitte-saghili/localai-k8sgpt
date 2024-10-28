@@ -45,7 +45,7 @@ docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-
 
 **Local AI** is a lightweight, fast, and secure AI inference service that can run anywhere. It provides a robust environment for deploying and running language models locally. This solution is perfect for users who want control over their AI workloads and need a flexible deployment option.
 
-![Local AI Architecture](image-1.png)
+![Local AI Architecture](localai.png)
 
 | **Model**       | **Year** | **Number of Parameters** | **Size (GB)**        |
 |-----------------|----------|--------------------------|----------------------|
