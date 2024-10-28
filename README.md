@@ -1,4 +1,8 @@
 
+<div style="text-align: center;">
+    <img src="halloween.gif" alt="Halloween" width="40%" height="40%">
+</div>
+
 # Local AI Inference Tools
 
 In this guide, we will explore two powerful tools for local inference with large language models (LLMs): **Ollama** and **Local AI**. Both tools provide a way to run models locally on your machine, offering more control and privacy compared to cloud-based solutions.
