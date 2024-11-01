@@ -39,6 +39,10 @@ Run the following command to start OpenWeb UI and connect it to your locally run
 docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 ```
 
+### Open Web UI
+
+Open a browser tab and head over to [http://localhost:3000](http://localhost:3000) to check out the Open Web UI and interact with your Ollama models.
+
 ---
 
 ## Local AI
